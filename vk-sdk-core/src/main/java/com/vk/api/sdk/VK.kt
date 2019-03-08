@@ -72,8 +72,30 @@ object VK {
      */
     @JvmStatic
     @JvmOverloads
-    fun login(activity: Activity, scopes: Collection<VKScope> = emptySet()) {
-        authManager.login(activity, scopes)
+    fun autoLogin(activity: Activity, scopes: Collection<VKScope> = emptySet()) {
+        authManager.autoLogin(activity, scopes)
+    }
+
+    /**
+     * This method starts authorization process using WebView.
+     * @param activity current activity
+     * @param scopes list of scopes required for app
+     */
+    @JvmStatic
+    @JvmOverloads
+    fun loginThroughWebView(activity: Activity, scopes: Collection<VKScope> = emptySet()) {
+        authManager.loginThroughWebView(activity, scopes)
+    }
+
+    /**
+     * This method starts authorization process using VK app.
+     * @param activity current activity
+     * @param scopes list of scopes required for app
+     */
+    @JvmStatic
+    @JvmOverloads
+    fun loginThroughApp(activity: Activity, scopes: Collection<VKScope> = emptySet()) {
+        authManager.loginThroughApp(activity, scopes)
     }
 
     /**

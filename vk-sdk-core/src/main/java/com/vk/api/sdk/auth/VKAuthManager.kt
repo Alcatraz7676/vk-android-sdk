@@ -33,7 +33,7 @@ import com.vk.api.sdk.utils.VKUtils
 import java.util.HashMap
 
 internal class VKAuthManager {
-    fun login(activity: Activity, scopes: Collection<VKScope>) {
+    fun autoLogin(activity: Activity, scopes: Collection<VKScope>) {
         val params = VKAuthParams(getAppId(activity), scopes)
         if (VKUtils.isAppInstalled(activity, VK_APP_PACKAGE_ID) && VKUtils.isIntentAvailable(activity, VK_APP_AUTH_ACTION)) {
             startAuthActivity(activity, params)
@@ -41,6 +41,16 @@ internal class VKAuthManager {
             // start dialog with webview
             startInternalAuthActivity(activity, params)
         }
+    }
+
+    fun loginThroughWebView(activity: Activity, scopes: Collection<VKScope>) {
+        val params = VKAuthParams(getAppId(activity), scopes)
+        startInternalAuthActivity(activity, params)
+    }
+
+    fun loginThroughApp(activity: Activity, scopes: Collection<VKScope>) {
+        val params = VKAuthParams(getAppId(activity), scopes)
+        startAuthActivity(activity, params)
     }
 
     private fun startAuthActivity(activity: Activity, params: VKAuthParams) {
