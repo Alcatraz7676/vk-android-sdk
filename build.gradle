@@ -37,6 +37,7 @@ subprojects { Project subproject ->
             classpath sdkGradlePlugins.android
             classpath sdkGradlePlugins.kotlinGradle
             classpath sdkGradlePlugins.bintryRelease
+            classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         }
     }
 
